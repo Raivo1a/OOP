@@ -8,16 +8,19 @@ class Category:
     _category_count = 0
     _product_count = 0
 
-    def __init__(self, name: str, description: str, __products: list):
+    def __init__(self, name: str, description: str, products: list):
         self.name = name
         self.description = description
-        self.__products = __products
+        self.__products = products
 
         Category._category_count += 1
 
-    def add_product(self, product: Product):
-        self.__products.append(product)
-        Category._product_count += 1
+    def add_product(self, product):
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category._product_count += 1
+        else:
+            raise TypeError("Добавлять можно только объекты класса Product")
 
     @property
     def products(self):
