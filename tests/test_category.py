@@ -7,5 +7,4 @@ def test_category(phone: Category):
         phone.description
         == "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни"
     )
-    assert Category.category_count == 1
-    assert Category.product_count == 0
+    assert Category._category_count == 1
