@@ -1,14 +1,32 @@
+from src.products import Product
+
+
 class Category:
     name: str
     description: str
-    products: list
-    category_count = 0
-    product_count = 0
+    __products: list
+    _category_count = 0
+    _product_count = 0
 
     def __init__(self, name: str, description: str, products: list):
         self.name = name
         self.description = description
-        self.products = products
+        self.__products = products
 
-        Category.category_count += 1
-        Category.product_count += len(products)
+        Category._category_count += 1
+
+    def add_product(self, product):
+        if isinstance(product, Product):
+            self.__products.append(product)
+            Category._product_count += 1
+        else:
+            raise TypeError("Добавлять можно только объекты класса Product")
+
+    @property
+    def products(self):
+        """Геттер, который будет выводить список товаров в виде строк в формате:
+        Название продукта, 80 руб. Остаток: 15 шт."""
+        formatted_list = []
+        for product in self.__products:
+            formatted_list.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
+        return formatted_list
