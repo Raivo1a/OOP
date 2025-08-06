@@ -32,3 +32,11 @@ def test_set_lower_price_denied(samsung: Product):
     with patch("builtins.input", return_value="n"):
         samsung.price = 150000
         assert samsung.price == 180000
+
+
+def test_str_product(apple: Product):
+    assert str(apple) == "Apple Iphone 16, 150000 руб. Остаток: 5 шт."
+
+
+def test_add_product(apple: Product, samsung: Product):
+    assert apple + samsung == 1650000

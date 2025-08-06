@@ -15,6 +15,9 @@ class Product:
         self.__price = __price
         self.quantity = quantity
 
+    def __str__(self):
+        return f"{self.name}, {self.__price} руб. Остаток: {self.quantity} шт."
+
     @classmethod
     def new_product(cls, product_data, existing_products):
         """Принимает на вход параметры товара в словаре и возвращает созданный объект класса Product"""
@@ -50,3 +53,6 @@ class Product:
                 print("Понижение цены отменено")
         else:
             self.__price = new_price
+
+    def __add__(self, other):
+        return (self.__price * self.quantity) + (other.__price * other.quantity)
