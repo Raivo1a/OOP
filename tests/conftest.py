@@ -10,11 +10,11 @@ def samsung() -> Product:
 
 
 @pytest.fixture()
-def phone() -> Category:
+def phone(samsung, apple) -> Category:
     return Category(
         "Смартфоны",
         "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни",
-        ["product1", "product2", "product3"],
+        [samsung, apple],
     )
 
 

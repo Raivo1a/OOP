@@ -11,4 +11,4 @@ def test_category(phone: Category):
 
 
 def test_str_category(phone: Category):
-    assert str(phone) == "Смартфоны, количество продуктов: 3 шт."
+    assert str(phone) == "Смартфоны, количество продуктов: 10 шт."
