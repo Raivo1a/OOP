@@ -8,3 +8,7 @@ def test_category(phone: Category):
         == "Смартфоны, как средство не только коммуникации, но и получение дополнительных функций для удобства жизни"
     )
     assert Category._category_count == 1
+
+
+def test_str_category(phone: Category):
+    assert str(phone) == "Смартфоны, количество продуктов: 10 шт."
