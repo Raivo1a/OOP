@@ -55,4 +55,7 @@ class Product:
             self.__price = new_price
 
     def __add__(self, other):
-        return (self.__price * self.quantity) + (other.__price * other.quantity)
+        if type(other) is self.__class__:
+            return (self.__price * self.quantity) + (other.__price * other.quantity)
+        else:
+            raise TypeError
