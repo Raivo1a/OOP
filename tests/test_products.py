@@ -2,7 +2,9 @@ from unittest.mock import patch
 
 import pytest
 
+from src.lawngrass import LawnGrass
 from src.products import Product
+from src.smartphone import Smartphone
 
 
 def test_product(samsung: Product):
@@ -40,3 +42,8 @@ def test_str_product(apple: Product):
 
 def test_add_product(apple: Product, samsung: Product):
     assert apple + samsung == 1650000
+
+
+def test_product_add_invalid(samsung: Smartphone, grass: LawnGrass):
+    with pytest.raises(TypeError):
+        samsung + grass
