@@ -36,3 +36,10 @@ def apple() -> Smartphone:
 @pytest.fixture()
 def grass() -> LawnGrass:
     return LawnGrass("Газонная трава", "Универсальная", "США", "5 дней", "Темно-зеленый", 500, 10)
+
+
+@pytest.fixture
+def sample_category():
+    Category._category_count = 0
+    Category._product_count = 0
+    return Category("Тестовая категория", "Для тестов", [])
