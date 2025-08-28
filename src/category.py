@@ -23,8 +23,14 @@ class Category:
 
     def add_product(self, product):
         if isinstance(product, Product):
-            self.__products.append(product)
-            Category._product_count += 1
+            try:
+                self.__products.append(product)
+                if product.quantity == 0:
+                    raise ValueError("Товар с нулевым количеством не может быть добавлен")
+                else:
+                    Category._product_count += 1
+            finally:
+                print("Обработка добавления товара завершена")
         else:
             raise TypeError("Добавлять можно только объекты класса Product")
 
@@ -36,3 +42,15 @@ class Category:
         for product in self.__products:
             formatted_list.append(f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.")
         return formatted_list
+
+    def middle_price_counter(self):
+        """Метод, который подсчитывает средний ценник всех товаров"""
+        quantity_sum = 0
+        price_sum = 0
+        for product in self.__products:
+            price_sum += product.price * product.quantity
+            quantity_sum += product.quantity
+        try:
+            return round(price_sum / quantity_sum, 2)
+        except ZeroDivisionError:
+            return 0
